@@ -1,16 +1,7 @@
 <?php get_header();
-while ( have_posts() ) : the_post(); ?>
-
-    <div class="page-banner">
-        <div class="page-banner__bg-image"
-             style="background-image: url(<?php echo get_theme_file_uri( '/images/ocean.jpg' ) ?>)"></div>
-        <div class="page-banner__content container container--narrow">
-            <h1 class="page-banner__title"><?php the_title() ?></h1>
-            <div class="page-banner__intro">
-                <p>DONT FORGET TO REPLACE ME LATER</p>
-            </div>
-        </div>
-    </div>
+while ( have_posts() ) : the_post();
+	pageBanner();
+	?>
 
     <div class="container container--narrow page-section">
 		<?php
@@ -28,7 +19,7 @@ while ( have_posts() ) : the_post(); ?>
 		<?php
 
 		$testArray = get_pages( array(
-			'child_of'  => get_the_ID()
+			'child_of' => get_the_ID()
 		) );
 
 		if ( $theParent || $testArray ) { ?>
@@ -55,17 +46,6 @@ while ( have_posts() ) : the_post(); ?>
 			<?php the_content(); ?>
         </div>
     </div>
-
-
-    <form action="" method="get">
-        <p>
-            <label for="s"><?php _e( 'Search' , 'mytextdomain' ); ?></label>
-            <input type="text" name="s" id="s" value="" data-swplive="true" />
-        </p>
-        <p>
-            <button type="submit"><?php _e( 'Search' , 'mytextdomain' ); ?></button>
-        </p>
-    </form>
 
 <?php endwhile;
 get_footer();
